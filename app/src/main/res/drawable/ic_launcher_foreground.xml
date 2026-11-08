@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Logótipo: marcador do mapa com o triângulo das Pousadas de Juventude (área de 108dp; o Android mostra o círculo central) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Marcador do mapa (branco) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,84 C46,73 32,63 32,46 A22,22 0 1,1 76,46 C76,63 62,73 54,84 Z" />
+    <!-- Triângulo das Pousadas de Juventude com a árvore e a casa (desenhado em 640x640 e reduzido) -->
+    <group
+        android:name="triangulo"
+        android:translateX="34.800"
+        android:translateY="25.720"
+        android:scaleX="0.06"
+        android:scaleY="0.06">
+        <path
+            android:fillColor="#5BA7DC"
+            android:pathData="M320,38 L622,562 Q320,478 20,562 Z" />
+        <path
+            android:pathData="M262,528 L262,470 L200,470 L238,405 L222,405 L255,330 L240,330 L275,255 L310,330 L295,330 L328,405 L312,405 L350,470 L290,470 L290,528"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="24"
+            android:strokeLineJoin="miter" />
+        <path
+            android:pathData="M343,397 L362,380 L448,454 M428,446 L428,528"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="24"
+            android:strokeLineJoin="miter" />
+    </group>
+</vector>

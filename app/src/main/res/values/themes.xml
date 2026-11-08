@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.JuventudeExplore" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- Primeiro ecrã ao abrir (desenhado pelo Android, biblioteca core-splashscreen): verde e logótipo.
+         O Android só aceita aqui uma cor lisa, não aceita o padrão. Logo a seguir a app mostra a
+         AberturaScreen, que junta o padrão do site e anima o logótipo a partir deste mesmo sítio. -->
+    <style name="Theme.JuventudeExplore.Abertura" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/logo_fundo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo_abertura</item>
+        <!-- Mostra o logótipo mesmo quando a app é aberta pelo Android Studio (Android 13 ou mais) -->
+        <item name="android:windowSplashScreenBehavior" tools:targetApi="33">icon_preferred</item>
+        <item name="postSplashScreenTheme">@style/Theme.JuventudeExplore</item>
+    </style>
+</resources>

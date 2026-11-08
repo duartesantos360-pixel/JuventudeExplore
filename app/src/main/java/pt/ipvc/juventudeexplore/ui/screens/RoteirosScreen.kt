@@ -1,0 +1,90 @@
+package pt.ipvc.juventudeexplore.ui.screens
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import pt.ipvc.juventudeexplore.R
+import pt.ipvc.juventudeexplore.data.DadosExemplo
+import pt.ipvc.juventudeexplore.data.Regiao
+import pt.ipvc.juventudeexplore.ui.theme.Branco
+import pt.ipvc.juventudeexplore.ui.theme.Cinzento
+import pt.ipvc.juventudeexplore.ui.theme.Laranja
+import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
+
+@Composable
+fun RoteirosScreen(onAbrirRoteiro: (Int) -> Unit) {
+    var regiao by rememberSaveable { mutableStateOf<Regiao?>(null) }
+
+    val regiaoDoRoteiro = { pousadaId: Int -> DadosExemplo.pousada(pousadaId)?.regiao }
+    val regioes = Regiao.entries.filter { r -> DadosExemplo.roteiros.any { regiaoDoRoteiro(it.pousadaId) == r } }
+    val lista = DadosExemplo.roteiros.filter { regiao == null || regiaoDoRoteiro(it.pousadaId) == regiao }
+
+    Column(
+        Modifier
+            .fillMaxSize()
+            .statusBarsPadding()
+    ) {
+        Cabecalho(stringResource(R.string.rot_titulo), subtitulo = stringResource(R.string.rot_subtitulo))
+        LazyColumn(
+            contentPadding = PaddingValues(horizontal = 20.dp, vertical = 8.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            item {
+                LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    item { ChipFiltro(stringResource(R.string.rot_todas_regioes), regiao == null) { regiao = null } }
+                    items(regioes) { r ->
+                        ChipFiltro(stringResource(r.titulo), regiao == r) { regiao = r }
+                    }
+                }
+            }
+            items(lista, key = { it.id }) { roteiro ->
+                Surface(
+                    onClick = { onAbrirRoteiro(roteiro.id) },
+                    shape = RectangleShape,
+                    color = Branco,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(Modifier.padding(16.dp)) {
+                        EtiquetaTriangulo(roteiro.cidade, cor = Laranja)
+                        Spacer(Modifier.height(4.dp))
+                        Text(roteiro.nome, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = TextoEscuro)
+                        Spacer(Modifier.height(4.dp))
+                        Text(
+                            stringResource(
+                                R.string.rot_resumo,
+                                formatarKm(roteiro.distanciaKm),
+                                roteiro.duracaoMinutos,
+                                roteiro.pontos.size
+                            ).uppercase(),
+                            style = MaterialTheme.typography.labelSmall,
+                            fontWeight = FontWeight.Normal,
+                            color = Cinzento
+                        )
+                    }
+                }
+            }
+        }
+    }
+}

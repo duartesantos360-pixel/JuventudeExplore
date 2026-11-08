@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Verde do site das Pousadas (fundo do arranque enquanto a app carrega) -->
+    <color name="logo_fundo">#5BC08F</color>
+</resources>
