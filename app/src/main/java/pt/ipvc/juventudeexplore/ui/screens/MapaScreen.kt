@@ -43,7 +43,7 @@ import androidx.compose.ui.unit.dp
 import org.osmdroid.util.GeoPoint
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
-import pt.ipvc.juventudeexplore.data.Pousada
+import pt.ipvc.juventudeexplore.data.model.Pousada
 import pt.ipvc.juventudeexplore.ui.theme.Amarelo
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.Branco

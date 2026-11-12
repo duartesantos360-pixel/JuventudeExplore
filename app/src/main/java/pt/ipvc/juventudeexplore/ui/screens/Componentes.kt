@@ -55,8 +55,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import pt.ipvc.juventudeexplore.R
-import pt.ipvc.juventudeexplore.data.Pousada
-import pt.ipvc.juventudeexplore.data.TipoTransporte
+import pt.ipvc.juventudeexplore.data.model.Pousada
+import pt.ipvc.juventudeexplore.data.model.TipoTransporte
 import pt.ipvc.juventudeexplore.ui.theme.Amarelo
 import pt.ipvc.juventudeexplore.ui.theme.AmareloEletrico
 import pt.ipvc.juventudeexplore.ui.theme.Azul
