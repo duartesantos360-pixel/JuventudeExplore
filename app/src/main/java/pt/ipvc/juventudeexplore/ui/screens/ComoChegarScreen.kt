@@ -38,6 +38,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
@@ -46,6 +47,7 @@ import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.AzulClaro
 import pt.ipvc.juventudeexplore.ui.theme.Branco
 import pt.ipvc.juventudeexplore.ui.theme.Cinzento
+import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.Linha
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
 
@@ -201,5 +203,13 @@ private fun OrigemDestino(destino: String) {
 private fun CampoLocal(texto: String) {
     CaixaBranca(Modifier.fillMaxWidth()) {
         Text(texto, color = TextoEscuro, modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp))
+    }
+}
+
+@Preview(name = "Como chegar", showSystemUi = true)
+@Composable
+private fun ComoChegarPreview() {
+    JuventudeExploreTheme(escuro = false) {
+        ComoChegarScreen(pousadaId = 38, onVoltar = {})
     }
 }

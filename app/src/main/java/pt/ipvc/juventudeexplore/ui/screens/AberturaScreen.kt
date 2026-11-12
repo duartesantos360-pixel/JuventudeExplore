@@ -23,10 +23,12 @@ import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import pt.ipvc.juventudeexplore.R
+import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 
 /** Verde do primeiro ecrã do sistema (o mesmo de res/values/cores_logo.xml). */
 private val VerdeAbertura = Color(0xFF5BC08F)
@@ -84,5 +86,13 @@ fun AberturaScreen(onFim: () -> Unit) {
                     .graphicsLayer { translationY = queda.value / 108f * size.height }
             )
         }
+    }
+}
+
+@Preview(name = "Abertura", showSystemUi = true)
+@Composable
+private fun AberturaPreview() {
+    JuventudeExploreTheme(escuro = false) {
+        AberturaScreen(onFim = {})
     }
 }

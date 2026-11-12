@@ -73,8 +73,6 @@ import pt.ipvc.juventudeexplore.ui.theme.VermelhoAutocarro
 import java.util.Locale
 import kotlin.math.roundToInt
 
-// ---------- Formatação ----------
-
 /** Preço como no site: "18,00€". */
 fun formatarPreco(valor: Double): String = String.format(Locale("pt", "PT"), "%.2f€", valor)
 
@@ -94,8 +92,6 @@ fun minutosAPe(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Int {
 @Composable
 fun formatarKm(km: Double): String =
     if (km < 10) String.format(LocalConfiguration.current.locales[0], "%.1f km", km) else "${km.toInt()} km"
-
-// ---------- Elementos gráficos do site ----------
 
 /** Triângulo azul do logótipo das Pousadas de Juventude. */
 @Composable
@@ -204,8 +200,6 @@ fun CaixaPreco(preco: Double, modifier: Modifier = Modifier, grande: Boolean = f
         Text(stringResource(R.string.comp_a_noite), color = Color.White, fontSize = if (grande) 13.sp else 11.sp)
     }
 }
-
-// ---------- Componentes ----------
 
 /** Filtro retangular: azul quando selecionado, branco com contorno azul quando não. */
 @Composable
@@ -470,8 +464,6 @@ fun letraTransporte(tipo: TipoTransporte): String = when (tipo) {
     TipoTransporte.BICICLETA -> "B"
     TipoTransporte.A_PE -> "P"
 }
-
-// ---------- Abrir o Google Maps ----------
 
 fun abrirTrajeto(context: Context, latitude: Double, longitude: Double, modo: String) {
     val uri = Uri.parse(

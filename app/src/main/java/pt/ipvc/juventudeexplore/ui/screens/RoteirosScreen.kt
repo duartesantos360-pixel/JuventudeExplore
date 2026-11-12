@@ -24,12 +24,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
 import pt.ipvc.juventudeexplore.data.Regiao
 import pt.ipvc.juventudeexplore.ui.theme.Branco
 import pt.ipvc.juventudeexplore.ui.theme.Cinzento
+import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.Laranja
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
 
@@ -86,5 +88,13 @@ fun RoteirosScreen(onAbrirRoteiro: (Int) -> Unit) {
                 }
             }
         }
+    }
+}
+
+@Preview(name = "Roteiros", showSystemUi = true)
+@Composable
+private fun RoteirosPreview() {
+    JuventudeExploreTheme(escuro = false) {
+        RoteirosScreen(onAbrirRoteiro = {})
     }
 }

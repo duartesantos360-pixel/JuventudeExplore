@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pt.ipvc.juventudeexplore.R
@@ -40,6 +41,7 @@ import pt.ipvc.juventudeexplore.data.TipoQuarto
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.Branco
 import pt.ipvc.juventudeexplore.ui.theme.Cinzento
+import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
 import pt.ipvc.juventudeexplore.ui.theme.Turquesa
 import pt.ipvc.juventudeexplore.ui.theme.Unbounded
@@ -242,5 +244,27 @@ private fun ReservaConfirmada(
             BotaoAmarelo(stringResource(R.string.res_ver_reservas), onClick = onVerReservas, modifier = Modifier.fillMaxWidth())
             BotaoContorno(stringResource(R.string.comp_voltar), onClick = onVoltar, modifier = Modifier.fillMaxWidth())
         }
+    }
+}
+
+@Preview(name = "Reservar", showSystemUi = true)
+@Composable
+private fun ReservarPreview() {
+    JuventudeExploreTheme(escuro = false) {
+        ReservaScreen(pousadaId = 38, onVoltar = {}, onVerReservas = {})
+    }
+}
+
+@Preview(name = "Reserva confirmada", showSystemUi = true)
+@Composable
+private fun ReservaConfirmadaPreview() {
+    JuventudeExploreTheme(escuro = false) {
+        ReservaConfirmada(
+            pousada = DadosExemplo.pousada(38)!!,
+            tipo = TipoQuarto.DORMITORIO,
+            nome = "Duarte",
+            onVerReservas = {},
+            onVoltar = {}
+        )
     }
 }

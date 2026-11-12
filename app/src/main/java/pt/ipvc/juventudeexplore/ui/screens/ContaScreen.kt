@@ -25,11 +25,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.Branco
 import pt.ipvc.juventudeexplore.ui.theme.Cinzento
+import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 
 /** Entrar / criar conta (só o desenho: o botão volta ao Perfil). */
 @Composable
@@ -103,4 +105,12 @@ private fun CampoConta(
         ),
         modifier = Modifier.fillMaxWidth()
     )
+}
+
+@Preview(name = "Entrar / criar conta", showSystemUi = true)
+@Composable
+private fun EntrarCriarContaPreview() {
+    JuventudeExploreTheme(escuro = false) {
+        ContaScreen(onVoltar = {})
+    }
 }
