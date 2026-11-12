@@ -40,6 +40,17 @@ import androidx.compose.ui.unit.dp
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
 import pt.ipvc.juventudeexplore.data.model.Pousada
+import pt.ipvc.juventudeexplore.ui.components.BotaoAmarelo
+import pt.ipvc.juventudeexplore.ui.components.BotaoAzul
+import pt.ipvc.juventudeexplore.ui.components.BotaoContorno
+import pt.ipvc.juventudeexplore.ui.components.BotaoRedondo
+import pt.ipvc.juventudeexplore.ui.components.BotaoVoltar
+import pt.ipvc.juventudeexplore.ui.components.Cabecalho
+import pt.ipvc.juventudeexplore.ui.components.CaixaBranca
+import pt.ipvc.juventudeexplore.ui.components.CaixaPreco
+import pt.ipvc.juventudeexplore.ui.components.EtiquetaTriangulo
+import pt.ipvc.juventudeexplore.ui.components.FotoPousada
+import pt.ipvc.juventudeexplore.ui.components.TituloSecao
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.Branco
 import pt.ipvc.juventudeexplore.ui.theme.Cinzento

@@ -44,6 +44,14 @@ import org.osmdroid.util.GeoPoint
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
 import pt.ipvc.juventudeexplore.data.model.Pousada
+import pt.ipvc.juventudeexplore.ui.components.BotaoRedondo
+import pt.ipvc.juventudeexplore.ui.components.CaixaPreco
+import pt.ipvc.juventudeexplore.ui.components.ChipFiltro
+import pt.ipvc.juventudeexplore.ui.components.EstiloMarcador
+import pt.ipvc.juventudeexplore.ui.components.EtiquetaTriangulo
+import pt.ipvc.juventudeexplore.ui.components.FotoPousada
+import pt.ipvc.juventudeexplore.ui.components.MapaOsm
+import pt.ipvc.juventudeexplore.ui.components.MarcadorMapa
 import pt.ipvc.juventudeexplore.ui.theme.Amarelo
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.Branco

@@ -43,6 +43,12 @@ import androidx.compose.ui.unit.dp
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
 import pt.ipvc.juventudeexplore.data.model.ModoTrajeto
+import pt.ipvc.juventudeexplore.ui.components.BotaoAmarelo
+import pt.ipvc.juventudeexplore.ui.components.Cabecalho
+import pt.ipvc.juventudeexplore.ui.components.CaixaBranca
+import pt.ipvc.juventudeexplore.ui.components.TituloSecao
+import pt.ipvc.juventudeexplore.ui.components.corDoTransporte
+import pt.ipvc.juventudeexplore.ui.components.letraTransporte
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.AzulClaro
 import pt.ipvc.juventudeexplore.ui.theme.Branco
