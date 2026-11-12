@@ -1,4 +1,4 @@
-package pt.ipvc.juventudeexplore.ui.screens
+package pt.ipvc.juventudeexplore.ui.screens.explorar
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -41,6 +41,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
+import pt.ipvc.juventudeexplore.ui.components.CartaoPousada
+import pt.ipvc.juventudeexplore.ui.components.ChipFiltro
+import pt.ipvc.juventudeexplore.ui.components.LinhasTopograficas
+import pt.ipvc.juventudeexplore.ui.components.Logotipo
+import pt.ipvc.juventudeexplore.ui.components.TituloDestaque
+import pt.ipvc.juventudeexplore.ui.components.TituloSecao
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.Branco
 import pt.ipvc.juventudeexplore.ui.theme.Cinzento

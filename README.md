@@ -37,7 +37,48 @@ Perfil → Entrar ou criar conta, Ficha da pousada, Reservar
 ```
 
 ## Estrutura
-- `ui/navigation/JuventudeExploreApp.kt` — NavHost, rotas e barra de navegação de baixo
-- `ui/screens/` — um ficheiro por ecrã; `Componentes.kt` tem os botões, cartões e títulos usados em todos
-- `ui/theme/` — cores e letra (tiradas do site pousadasjuventude.pt)
-- `data/` — modelos (`Pousada`, `Roteiro`...) e dados de exemplo
+```
+app/src/main/java/pt/ipvc/juventudeexplore/
+├── MainActivity.kt                 abre a app (ecrã de abertura + navegação)
+├── data/
+│   ├── model/                      classes de dados
+│   │   ├── Pousada.kt              Pousada, Precos, Acessibilidade, Regiao, TipoQuarto
+│   │   ├── Roteiro.kt              Roteiro, PontoInteresse
+│   │   └── Transporte.kt           Paragem, TipoTransporte, ModoTrajeto
+│   └── DadosExemplo.kt             6 pousadas e 6 roteiros de exemplo (fixos)
+├── ui/
+│   ├── navigation/
+│   │   ├── Rotas.kt                o endereço de cada ecrã
+│   │   └── JuventudeExploreApp.kt  NavHost e barra de navegação de baixo
+│   ├── screens/                    um ficheiro por ecrã, agrupados por funcionalidade
+│   │   ├── abertura/               AberturaScreen
+│   │   ├── explorar/               ExplorarScreen
+│   │   ├── mapa/                   MapaScreen
+│   │   ├── pousada/                PousadaDetalheScreen, ComoChegarScreen
+│   │   ├── reservas/               ReservaScreen (+ confirmação), ReservasScreen
+│   │   ├── roteiros/               RoteirosScreen, RoteiroDetalheScreen
+│   │   └── perfil/                 PerfilScreen, ContaScreen
+│   ├── components/                 peças usadas em vários ecrãs
+│   │   ├── Botoes.kt               botões e filtros
+│   │   ├── Textos.kt               títulos, etiquetas e caixa de preço
+│   │   ├── Cartoes.kt              cabeçalho, cartão da pousada, caixas
+│   │   ├── Imagens.kt              logótipo, triângulo, fotos, linhas do fundo
+│   │   ├── Transportes.kt          cor e letra de cada transporte
+│   │   └── MapaOsm.kt              mapa do OpenStreetMap (osmdroid)
+│   └── theme/
+│       ├── Cores.kt                cores do site pousadasjuventude.pt
+│       ├── Tipografia.kt           letra Unbounded e tamanhos de texto
+│       └── Theme.kt                JuventudeExploreTheme (modo claro e escuro)
+└── util/
+    ├── Formatacao.kt               preços ("18,00€") e distâncias ("2,4 km")
+    ├── Distancia.kt                minutos a pé entre dois pontos
+    └── GoogleMaps.kt               abrir trajetos no Google Maps
+```
+
+## Pré-visualização dos ecrãs
+Cada ecrã tem um `@Preview` no fim do ficheiro. Abrir o ficheiro e carregar em **Split** ou **Design** (canto superior direito) para ver o ecrã sem correr a app.
+
+## Trabalho em grupo (Git)
+- Cada tarefa num **branch** próprio (`git checkout -b nome-da-tarefa`), com commits pequenos.
+- Juntar ao `main` por **pull request** no GitHub.
+- No fim de cada checkpoint marca-se a versão com uma tag (`cp1`, `cp2`, ...).

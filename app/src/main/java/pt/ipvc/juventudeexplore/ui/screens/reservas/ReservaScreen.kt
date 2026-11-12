@@ -1,4 +1,4 @@
-package pt.ipvc.juventudeexplore.ui.screens
+package pt.ipvc.juventudeexplore.ui.screens.reservas
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -36,8 +36,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
-import pt.ipvc.juventudeexplore.data.Pousada
-import pt.ipvc.juventudeexplore.data.TipoQuarto
+import pt.ipvc.juventudeexplore.data.model.Pousada
+import pt.ipvc.juventudeexplore.data.model.TipoQuarto
+import pt.ipvc.juventudeexplore.ui.components.BotaoAmarelo
+import pt.ipvc.juventudeexplore.ui.components.BotaoContorno
+import pt.ipvc.juventudeexplore.ui.components.Cabecalho
+import pt.ipvc.juventudeexplore.ui.components.Etiqueta
+import pt.ipvc.juventudeexplore.ui.components.EtiquetaTriangulo
+import pt.ipvc.juventudeexplore.ui.components.LinhasTopograficas
+import pt.ipvc.juventudeexplore.ui.components.TituloDestaque
+import pt.ipvc.juventudeexplore.ui.components.TituloSecao
+import pt.ipvc.juventudeexplore.ui.components.contornoAzul
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.Branco
 import pt.ipvc.juventudeexplore.ui.theme.Cinzento
@@ -45,6 +54,7 @@ import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
 import pt.ipvc.juventudeexplore.ui.theme.Turquesa
 import pt.ipvc.juventudeexplore.ui.theme.Unbounded
+import pt.ipvc.juventudeexplore.util.formatarPreco
 
 /**
  * Ecrã de reserva (só o desenho e a navegação): escolher o quarto, escrever os dados e confirmar.

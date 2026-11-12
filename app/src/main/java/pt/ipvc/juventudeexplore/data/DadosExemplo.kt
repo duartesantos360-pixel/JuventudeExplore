@@ -1,5 +1,13 @@
 package pt.ipvc.juventudeexplore.data
 
+import pt.ipvc.juventudeexplore.data.model.Acessibilidade
+import pt.ipvc.juventudeexplore.data.model.Paragem
+import pt.ipvc.juventudeexplore.data.model.PontoInteresse
+import pt.ipvc.juventudeexplore.data.model.Pousada
+import pt.ipvc.juventudeexplore.data.model.Precos
+import pt.ipvc.juventudeexplore.data.model.Regiao
+import pt.ipvc.juventudeexplore.data.model.Roteiro
+import pt.ipvc.juventudeexplore.data.model.TipoTransporte
 import kotlin.math.roundToInt
 
 /**

@@ -1,4 +1,4 @@
-package pt.ipvc.juventudeexplore.ui.screens
+package pt.ipvc.juventudeexplore.ui.screens.abertura
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring

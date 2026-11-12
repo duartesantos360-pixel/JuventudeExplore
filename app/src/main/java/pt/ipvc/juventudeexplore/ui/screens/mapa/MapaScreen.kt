@@ -1,4 +1,4 @@
-package pt.ipvc.juventudeexplore.ui.screens
+package pt.ipvc.juventudeexplore.ui.screens.mapa
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -43,7 +43,15 @@ import androidx.compose.ui.unit.dp
 import org.osmdroid.util.GeoPoint
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
-import pt.ipvc.juventudeexplore.data.Pousada
+import pt.ipvc.juventudeexplore.data.model.Pousada
+import pt.ipvc.juventudeexplore.ui.components.BotaoRedondo
+import pt.ipvc.juventudeexplore.ui.components.CaixaPreco
+import pt.ipvc.juventudeexplore.ui.components.ChipFiltro
+import pt.ipvc.juventudeexplore.ui.components.EstiloMarcador
+import pt.ipvc.juventudeexplore.ui.components.EtiquetaTriangulo
+import pt.ipvc.juventudeexplore.ui.components.FotoPousada
+import pt.ipvc.juventudeexplore.ui.components.MapaOsm
+import pt.ipvc.juventudeexplore.ui.components.MarcadorMapa
 import pt.ipvc.juventudeexplore.ui.theme.Amarelo
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.Branco
@@ -51,6 +59,7 @@ import pt.ipvc.juventudeexplore.ui.theme.Cinzento
 import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
 import pt.ipvc.juventudeexplore.ui.theme.TextoSobreClaro
+import pt.ipvc.juventudeexplore.util.formatarPreco
 
 @Composable
 fun MapaScreen(

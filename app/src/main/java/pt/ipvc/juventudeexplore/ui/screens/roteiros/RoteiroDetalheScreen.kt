@@ -1,4 +1,4 @@
-package pt.ipvc.juventudeexplore.ui.screens
+package pt.ipvc.juventudeexplore.ui.screens.roteiros
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -35,6 +35,16 @@ import androidx.compose.ui.unit.sp
 import org.osmdroid.util.GeoPoint
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
+import pt.ipvc.juventudeexplore.ui.components.BotaoAmarelo
+import pt.ipvc.juventudeexplore.ui.components.BotaoVoltar
+import pt.ipvc.juventudeexplore.ui.components.Cabecalho
+import pt.ipvc.juventudeexplore.ui.components.CaixaBranca
+import pt.ipvc.juventudeexplore.ui.components.CirculoNumero
+import pt.ipvc.juventudeexplore.ui.components.EstiloMarcador
+import pt.ipvc.juventudeexplore.ui.components.EtiquetaTriangulo
+import pt.ipvc.juventudeexplore.ui.components.MapaOsm
+import pt.ipvc.juventudeexplore.ui.components.MarcadorMapa
+import pt.ipvc.juventudeexplore.ui.components.TituloDestaque
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.Cinzento
 import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
@@ -42,6 +52,8 @@ import pt.ipvc.juventudeexplore.ui.theme.Laranja
 import pt.ipvc.juventudeexplore.ui.theme.Linha
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
 import pt.ipvc.juventudeexplore.ui.theme.Unbounded
+import pt.ipvc.juventudeexplore.util.abrirRoteiroNoMapa
+import pt.ipvc.juventudeexplore.util.formatarKm
 
 @Composable
 fun RoteiroDetalheScreen(roteiroId: Int, onVoltar: () -> Unit) {

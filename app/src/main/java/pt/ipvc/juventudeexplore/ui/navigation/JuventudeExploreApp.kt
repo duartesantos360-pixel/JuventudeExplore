@@ -31,38 +31,19 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import pt.ipvc.juventudeexplore.R
-import pt.ipvc.juventudeexplore.ui.screens.ComoChegarScreen
-import pt.ipvc.juventudeexplore.ui.screens.ContaScreen
-import pt.ipvc.juventudeexplore.ui.screens.ExplorarScreen
-import pt.ipvc.juventudeexplore.ui.screens.MapaScreen
-import pt.ipvc.juventudeexplore.ui.screens.PerfilScreen
-import pt.ipvc.juventudeexplore.ui.screens.PousadaDetalheScreen
-import pt.ipvc.juventudeexplore.ui.screens.ReservaScreen
-import pt.ipvc.juventudeexplore.ui.screens.ReservasScreen
-import pt.ipvc.juventudeexplore.ui.screens.RoteiroDetalheScreen
-import pt.ipvc.juventudeexplore.ui.screens.RoteirosScreen
+import pt.ipvc.juventudeexplore.ui.screens.explorar.ExplorarScreen
+import pt.ipvc.juventudeexplore.ui.screens.mapa.MapaScreen
+import pt.ipvc.juventudeexplore.ui.screens.perfil.ContaScreen
+import pt.ipvc.juventudeexplore.ui.screens.perfil.PerfilScreen
+import pt.ipvc.juventudeexplore.ui.screens.pousada.ComoChegarScreen
+import pt.ipvc.juventudeexplore.ui.screens.pousada.PousadaDetalheScreen
+import pt.ipvc.juventudeexplore.ui.screens.reservas.ReservaScreen
+import pt.ipvc.juventudeexplore.ui.screens.reservas.ReservasScreen
+import pt.ipvc.juventudeexplore.ui.screens.roteiros.RoteiroDetalheScreen
+import pt.ipvc.juventudeexplore.ui.screens.roteiros.RoteirosScreen
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.Branco
 import pt.ipvc.juventudeexplore.ui.theme.Cinzento
-
-/** Rotas (endereços) de cada ecrã. As que têm {id} recebem o id da pousada ou do roteiro. */
-object Rotas {
-    const val EXPLORAR = "explorar"
-    const val MAPA = "mapa"
-    const val ROTEIROS = "roteiros"
-    const val RESERVAS = "reservas"
-    const val PERFIL = "perfil"
-    const val CONTA = "conta"
-    const val POUSADA = "pousada/{id}"
-    const val COMO_CHEGAR = "comochegar/{id}"
-    const val ROTEIRO = "roteiro/{id}"
-    const val RESERVA = "reserva/{id}"
-
-    fun pousada(id: Int) = "pousada/$id"
-    fun comoChegar(id: Int) = "comochegar/$id"
-    fun roteiro(id: Int) = "roteiro/$id"
-    fun reserva(id: Int) = "reserva/$id"
-}
 
 private data class ItemMenu(val rota: String, val titulo: Int, val icone: ImageVector)
 

@@ -1,4 +1,4 @@
-package pt.ipvc.juventudeexplore.ui.screens
+package pt.ipvc.juventudeexplore.ui.screens.pousada
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -42,7 +42,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
-import pt.ipvc.juventudeexplore.data.ModoTrajeto
+import pt.ipvc.juventudeexplore.data.model.ModoTrajeto
+import pt.ipvc.juventudeexplore.ui.components.BotaoAmarelo
+import pt.ipvc.juventudeexplore.ui.components.Cabecalho
+import pt.ipvc.juventudeexplore.ui.components.CaixaBranca
+import pt.ipvc.juventudeexplore.ui.components.TituloSecao
+import pt.ipvc.juventudeexplore.ui.components.corDoTransporte
+import pt.ipvc.juventudeexplore.ui.components.letraTransporte
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.AzulClaro
 import pt.ipvc.juventudeexplore.ui.theme.Branco
@@ -50,6 +56,8 @@ import pt.ipvc.juventudeexplore.ui.theme.Cinzento
 import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.Linha
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
+import pt.ipvc.juventudeexplore.util.abrirTrajeto
+import pt.ipvc.juventudeexplore.util.minutosAPe
 
 @Composable
 fun ComoChegarScreen(pousadaId: Int, onVoltar: () -> Unit) {

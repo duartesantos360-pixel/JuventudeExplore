@@ -1,4 +1,4 @@
-package pt.ipvc.juventudeexplore.ui.screens
+package pt.ipvc.juventudeexplore.ui.screens.reservas
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,11 +23,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
+import pt.ipvc.juventudeexplore.ui.components.BotaoAmarelo
+import pt.ipvc.juventudeexplore.ui.components.Cabecalho
+import pt.ipvc.juventudeexplore.ui.components.Etiqueta
+import pt.ipvc.juventudeexplore.ui.components.EtiquetaTriangulo
+import pt.ipvc.juventudeexplore.ui.components.TituloSecao
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.Branco
 import pt.ipvc.juventudeexplore.ui.theme.Cinzento
 import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
+import pt.ipvc.juventudeexplore.util.formatarPreco
 
 /**
  * As minhas reservas. Por agora mostra uma reserva de exemplo, para se ver o desenho do cartão

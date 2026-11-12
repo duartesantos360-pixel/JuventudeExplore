@@ -1,4 +1,4 @@
-package pt.ipvc.juventudeexplore.ui.screens
+package pt.ipvc.juventudeexplore.ui.components
 
 import android.content.Context
 import android.graphics.Bitmap
