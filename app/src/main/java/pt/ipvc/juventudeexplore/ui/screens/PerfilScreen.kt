@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -33,6 +32,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
@@ -40,6 +40,7 @@ import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.AzulClaro
 import pt.ipvc.juventudeexplore.ui.theme.Branco
 import pt.ipvc.juventudeexplore.ui.theme.Cinzento
+import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
 
 @Composable
@@ -146,5 +147,13 @@ fun PerfilScreen(
                     .padding(horizontal = 20.dp, vertical = 8.dp)
             )
         }
+    }
+}
+
+@Preview(name = "Perfil", showSystemUi = true)
+@Composable
+private fun PerfilPreview() {
+    JuventudeExploreTheme(escuro = false) {
+        PerfilScreen(onAbrirPousada = {}, onReservar = {}, onEntrar = {})
     }
 }

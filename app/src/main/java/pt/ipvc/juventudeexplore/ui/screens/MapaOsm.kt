@@ -9,7 +9,9 @@ import android.graphics.RectF
 import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import java.io.File
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -17,10 +19,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.viewinterop.AndroidView
 import org.osmdroid.config.Configuration
 import org.osmdroid.events.MapListener
@@ -37,9 +41,11 @@ import org.osmdroid.views.overlay.Polyline
 import pt.ipvc.juventudeexplore.ui.theme.Amarelo
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.AzulMuitoClaro
-import pt.ipvc.juventudeexplore.ui.theme.Linha
+import pt.ipvc.juventudeexplore.ui.theme.Cinzento
 import pt.ipvc.juventudeexplore.ui.theme.Laranja
+import pt.ipvc.juventudeexplore.ui.theme.Linha
 import pt.ipvc.juventudeexplore.ui.theme.TextoSobreClaro
+import java.io.File
 
 /**
  * Mapa real do OpenStreetMap (biblioteca osmdroid, não precisa de chave de API).
@@ -75,6 +81,15 @@ fun MapaOsm(
     semInternet: Boolean = false,
     onMarcador: (String) -> Unit = {}
 ) {
+    // No @Preview do Android Studio o mapa real não aparece (precisa da app a correr);
+    // mostra-se só um fundo com a cor da app no lugar dele
+    if (LocalInspectionMode.current) {
+        Box(modifier.background(AzulMuitoClaro), contentAlignment = Alignment.Center) {
+            Text("Mapa (OpenStreetMap)", color = Cinzento)
+        }
+        return
+    }
+
     val context = LocalContext.current
     val mapa = remember { criarMapa(context) }
     // Onde ainda não há mapa (ou sem internet) o fundo fica liso, com as cores da app, em vez dos

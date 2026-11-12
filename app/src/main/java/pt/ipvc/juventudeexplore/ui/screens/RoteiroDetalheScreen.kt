@@ -29,6 +29,7 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.osmdroid.util.GeoPoint
@@ -36,6 +37,7 @@ import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.Cinzento
+import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.Laranja
 import pt.ipvc.juventudeexplore.ui.theme.Linha
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
@@ -170,5 +172,13 @@ private fun LinhaParagem(numero: Int, nome: String, descricao: String, ultima: B
             Text(nome, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = TextoEscuro)
             Text(descricao, style = MaterialTheme.typography.bodySmall, color = Cinzento)
         }
+    }
+}
+
+@Preview(name = "Roteiro a pé", showSystemUi = true)
+@Composable
+private fun RoteiroAPePreview() {
+    JuventudeExploreTheme(escuro = false) {
+        RoteiroDetalheScreen(roteiroId = 5, onVoltar = {})
     }
 }

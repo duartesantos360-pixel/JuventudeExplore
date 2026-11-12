@@ -19,12 +19,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.Branco
 import pt.ipvc.juventudeexplore.ui.theme.Cinzento
+import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
 
 /**
@@ -88,5 +90,13 @@ fun ReservasScreen(onAbrirPousada: (Int) -> Unit, onExplorar: () -> Unit) {
             )
             BotaoAmarelo(stringResource(R.string.ress_explorar), onClick = onExplorar, modifier = Modifier.fillMaxWidth())
         }
+    }
+}
+
+@Preview(name = "Reservas", showSystemUi = true)
+@Composable
+private fun ReservasPreview() {
+    JuventudeExploreTheme(escuro = false) {
+        ReservasScreen(onAbrirPousada = {}, onExplorar = {})
     }
 }
