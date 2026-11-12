@@ -34,6 +34,7 @@ import pt.ipvc.juventudeexplore.ui.theme.Cinzento
 import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.Laranja
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
+import pt.ipvc.juventudeexplore.util.formatarKm
 
 @Composable
 fun RoteirosScreen(onAbrirRoteiro: (Int) -> Unit) {

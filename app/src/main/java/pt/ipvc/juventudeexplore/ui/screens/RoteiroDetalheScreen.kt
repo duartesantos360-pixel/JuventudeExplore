@@ -42,6 +42,8 @@ import pt.ipvc.juventudeexplore.ui.theme.Laranja
 import pt.ipvc.juventudeexplore.ui.theme.Linha
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
 import pt.ipvc.juventudeexplore.ui.theme.Unbounded
+import pt.ipvc.juventudeexplore.util.abrirRoteiroNoMapa
+import pt.ipvc.juventudeexplore.util.formatarKm
 
 @Composable
 fun RoteiroDetalheScreen(roteiroId: Int, onVoltar: () -> Unit) {

@@ -28,6 +28,7 @@ import pt.ipvc.juventudeexplore.ui.theme.Branco
 import pt.ipvc.juventudeexplore.ui.theme.Cinzento
 import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
+import pt.ipvc.juventudeexplore.util.formatarPreco
 
 /**
  * As minhas reservas. Por agora mostra uma reserva de exemplo, para se ver o desenho do cartão

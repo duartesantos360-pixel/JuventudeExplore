@@ -45,6 +45,7 @@ import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
 import pt.ipvc.juventudeexplore.ui.theme.Turquesa
 import pt.ipvc.juventudeexplore.ui.theme.Unbounded
+import pt.ipvc.juventudeexplore.util.formatarPreco
 
 /**
  * Ecrã de reserva (só o desenho e a navegação): escolher o quarto, escrever os dados e confirmar.

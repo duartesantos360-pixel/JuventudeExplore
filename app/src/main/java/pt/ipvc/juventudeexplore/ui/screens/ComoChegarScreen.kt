@@ -50,6 +50,8 @@ import pt.ipvc.juventudeexplore.ui.theme.Cinzento
 import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.Linha
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
+import pt.ipvc.juventudeexplore.util.abrirTrajeto
+import pt.ipvc.juventudeexplore.util.minutosAPe
 
 @Composable
 fun ComoChegarScreen(pousadaId: Int, onVoltar: () -> Unit) {

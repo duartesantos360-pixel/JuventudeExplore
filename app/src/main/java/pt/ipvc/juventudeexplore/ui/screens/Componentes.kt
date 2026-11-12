@@ -1,8 +1,5 @@
 package pt.ipvc.juventudeexplore.ui.screens
 
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -44,7 +41,6 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
@@ -70,28 +66,7 @@ import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
 import pt.ipvc.juventudeexplore.ui.theme.TextoSobreClaro
 import pt.ipvc.juventudeexplore.ui.theme.Unbounded
 import pt.ipvc.juventudeexplore.ui.theme.VermelhoAutocarro
-import java.util.Locale
-import kotlin.math.roundToInt
-
-/** Preço como no site: "18,00€". */
-fun formatarPreco(valor: Double): String = String.format(Locale("pt", "PT"), "%.2f€", valor)
-
-/** Tempo aproximado a pé entre dois pontos (linha reta x 1,3, a 5 km/h). */
-fun minutosAPe(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Int {
-    val r = 6371.0
-    val dLat = Math.toRadians(lat2 - lat1)
-    val dLon = Math.toRadians(lon2 - lon1)
-    val h = kotlin.math.sin(dLat / 2).let { it * it } +
-        kotlin.math.cos(Math.toRadians(lat1)) * kotlin.math.cos(Math.toRadians(lat2)) *
-        kotlin.math.sin(dLon / 2).let { it * it }
-    val km = 2 * r * kotlin.math.asin(kotlin.math.sqrt(h))
-    return (km * 1.3 / 5.0 * 60).roundToInt().coerceAtLeast(1)
-}
-
-/** "2,4 km" */
-@Composable
-fun formatarKm(km: Double): String =
-    if (km < 10) String.format(LocalConfiguration.current.locales[0], "%.1f km", km) else "${km.toInt()} km"
+import pt.ipvc.juventudeexplore.util.formatarPreco
 
 /** Triângulo azul do logótipo das Pousadas de Juventude. */
 @Composable
@@ -463,24 +438,4 @@ fun letraTransporte(tipo: TipoTransporte): String = when (tipo) {
     TipoTransporte.COMBOIO -> "C"
     TipoTransporte.BICICLETA -> "B"
     TipoTransporte.A_PE -> "P"
-}
-
-fun abrirTrajeto(context: Context, latitude: Double, longitude: Double, modo: String) {
-    val uri = Uri.parse(
-        "https://www.google.com/maps/dir/?api=1&destination=$latitude,$longitude&travelmode=$modo"
-    )
-    context.startActivity(Intent(Intent.ACTION_VIEW, uri))
-}
-
-/** Abre o roteiro a pé no Google Maps: da pousada ao último ponto, passando pelos outros. */
-fun abrirRoteiroNoMapa(context: Context, origem: Pair<Double, Double>, pontos: List<Pair<Double, Double>>) {
-    if (pontos.isEmpty()) return
-    val destino = pontos.last()
-    val intermedios = pontos.dropLast(1).joinToString("|") { "${it.first},${it.second}" }
-    val link = "https://www.google.com/maps/dir/?api=1" +
-        "&origin=${origem.first},${origem.second}" +
-        "&destination=${destino.first},${destino.second}" +
-        (if (intermedios.isNotEmpty()) "&waypoints=${Uri.encode(intermedios)}" else "") +
-        "&travelmode=walking"
-    context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(link)))
 }

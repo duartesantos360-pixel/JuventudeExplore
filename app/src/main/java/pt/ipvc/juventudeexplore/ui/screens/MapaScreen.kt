@@ -51,6 +51,7 @@ import pt.ipvc.juventudeexplore.ui.theme.Cinzento
 import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
 import pt.ipvc.juventudeexplore.ui.theme.TextoSobreClaro
+import pt.ipvc.juventudeexplore.util.formatarPreco
 
 @Composable
 fun MapaScreen(

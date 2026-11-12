@@ -48,6 +48,7 @@ import pt.ipvc.juventudeexplore.ui.theme.Laranja
 import pt.ipvc.juventudeexplore.ui.theme.Linha
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
 import pt.ipvc.juventudeexplore.ui.theme.Unbounded
+import pt.ipvc.juventudeexplore.util.formatarPreco
 
 @Composable
 fun PousadaDetalheScreen(
