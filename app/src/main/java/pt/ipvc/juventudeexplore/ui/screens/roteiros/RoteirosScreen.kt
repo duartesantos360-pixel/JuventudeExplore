@@ -1,4 +1,4 @@
-package pt.ipvc.juventudeexplore.ui.screens
+package pt.ipvc.juventudeexplore.ui.screens.roteiros
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

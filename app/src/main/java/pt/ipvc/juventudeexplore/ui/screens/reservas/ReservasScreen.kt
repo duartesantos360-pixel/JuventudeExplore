@@ -1,4 +1,4 @@
-package pt.ipvc.juventudeexplore.ui.screens
+package pt.ipvc.juventudeexplore.ui.screens.reservas
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

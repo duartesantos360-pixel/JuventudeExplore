@@ -1,4 +1,4 @@
-package pt.ipvc.juventudeexplore.ui.screens
+package pt.ipvc.juventudeexplore.ui.screens.pousada
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

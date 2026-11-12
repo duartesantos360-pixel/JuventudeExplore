@@ -10,7 +10,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import pt.ipvc.juventudeexplore.ui.navigation.JuventudeExploreApp
-import pt.ipvc.juventudeexplore.ui.screens.AberturaScreen
+import pt.ipvc.juventudeexplore.ui.screens.abertura.AberturaScreen
 import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 
 class MainActivity : ComponentActivity() {
