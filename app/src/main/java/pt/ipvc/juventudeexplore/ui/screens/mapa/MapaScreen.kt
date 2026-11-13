@@ -44,6 +44,7 @@ import org.osmdroid.util.GeoPoint
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
 import pt.ipvc.juventudeexplore.data.model.Pousada
+import pt.ipvc.juventudeexplore.data.model.Roteiro
 import pt.ipvc.juventudeexplore.ui.components.BotaoRedondo
 import pt.ipvc.juventudeexplore.ui.components.CaixaPreco
 import pt.ipvc.juventudeexplore.ui.components.ChipFiltro
@@ -63,22 +64,24 @@ import pt.ipvc.juventudeexplore.util.formatarPreco
 
 @Composable
 fun MapaScreen(
+    pousadas: List<Pousada>,
+    roteiros: List<Roteiro>,
+    pesquisa: String,
+    onPesquisa: (String) -> Unit,
     onAbrirPousada: (Int) -> Unit,
     onReservar: (Int) -> Unit,
     onVerLista: () -> Unit
 ) {
-    var pesquisa by rememberSaveable { mutableStateOf("") }
+    // A pesquisa e as listas vem do ViewModel (partilhadas com o Explorar).
+    // Aqui so fica o que e do proprio mapa: a pousada escolhida e a camada do patrimonio.
     var selecionadaId by rememberSaveable { mutableStateOf<Int?>(null) }
     var verPatrimonio by rememberSaveable { mutableStateOf(true) }
 
-    val pousadas = DadosExemplo.pousadas.filter {
-        pesquisa.isBlank() || it.cidade.contains(pesquisa.trim(), ignoreCase = true)
-    }
     val selecionada = pousadas.find { it.id == selecionadaId }
 
     val marcadores = buildList {
         if (verPatrimonio) {
-            DadosExemplo.roteiros.filter { r -> pousadas.any { it.id == r.pousadaId } }.forEach { r ->
+            roteiros.filter { r -> pousadas.any { it.id == r.pousadaId } }.forEach { r ->
                 r.pontos.forEachIndexed { i, p ->
                     add(MarcadorMapa("ponto:${r.id}:$i", p.latitude, p.longitude, EstiloMarcador.PATRIMONIO))
                 }
@@ -126,7 +129,7 @@ fun MapaScreen(
                 OutlinedTextField(
                     value = pesquisa,
                     onValueChange = {
-                        pesquisa = it
+                        onPesquisa(it)
                         selecionadaId = null
                     },
                     placeholder = { Text(stringResource(R.string.mapa_pesquisa), color = Cinzento) },
@@ -236,6 +239,14 @@ private fun CartaoPousadaMapa(
 @Composable
 private fun MapaPreview() {
     JuventudeExploreTheme(escuro = false) {
-        MapaScreen(onAbrirPousada = {}, onReservar = {}, onVerLista = {})
+        MapaScreen(
+            pousadas = DadosExemplo.pousadas,
+            roteiros = DadosExemplo.roteiros,
+            pesquisa = "",
+            onPesquisa = {},
+            onAbrirPousada = {},
+            onReservar = {},
+            onVerLista = {}
+        )
     }
 }
