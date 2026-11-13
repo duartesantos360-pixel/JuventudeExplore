@@ -16,10 +16,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.stringResource
@@ -29,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
 import pt.ipvc.juventudeexplore.data.model.Regiao
+import pt.ipvc.juventudeexplore.data.model.Roteiro
 import pt.ipvc.juventudeexplore.ui.components.Cabecalho
 import pt.ipvc.juventudeexplore.ui.components.ChipFiltro
 import pt.ipvc.juventudeexplore.ui.components.EtiquetaTriangulo
@@ -40,13 +37,13 @@ import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
 import pt.ipvc.juventudeexplore.util.formatarKm
 
 @Composable
-fun RoteirosScreen(onAbrirRoteiro: (Int) -> Unit) {
-    var regiao by rememberSaveable { mutableStateOf<Regiao?>(null) }
-
-    val regiaoDoRoteiro = { pousadaId: Int -> DadosExemplo.pousada(pousadaId)?.regiao }
-    val regioes = Regiao.entries.filter { r -> DadosExemplo.roteiros.any { regiaoDoRoteiro(it.pousadaId) == r } }
-    val lista = DadosExemplo.roteiros.filter { regiao == null || regiaoDoRoteiro(it.pousadaId) == regiao }
-
+fun RoteirosScreen(
+    roteiros: List<Roteiro>,       // roteiros ja filtrados pelo ViewModel
+    regioes: List<Regiao>,         // regioes que aparecem nos botoes
+    regiao: Regiao?,               // regiao escolhida (null = todas)
+    onRegiao: (Regiao?) -> Unit,
+    onAbrirRoteiro: (Int) -> Unit
+) {
     Column(
         Modifier
             .fillMaxSize()
@@ -59,13 +56,13 @@ fun RoteirosScreen(onAbrirRoteiro: (Int) -> Unit) {
         ) {
             item {
                 LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    item { ChipFiltro(stringResource(R.string.rot_todas_regioes), regiao == null) { regiao = null } }
+                    item { ChipFiltro(stringResource(R.string.rot_todas_regioes), regiao == null) { onRegiao(null) } }
                     items(regioes) { r ->
-                        ChipFiltro(stringResource(r.titulo), regiao == r) { regiao = r }
+                        ChipFiltro(stringResource(r.titulo), regiao == r) { onRegiao(r) }
                     }
                 }
             }
-            items(lista, key = { it.id }) { roteiro ->
+            items(roteiros, key = { it.id }) { roteiro ->
                 Surface(
                     onClick = { onAbrirRoteiro(roteiro.id) },
                     shape = RectangleShape,
@@ -99,6 +96,12 @@ fun RoteirosScreen(onAbrirRoteiro: (Int) -> Unit) {
 @Composable
 private fun RoteirosPreview() {
     JuventudeExploreTheme(escuro = false) {
-        RoteirosScreen(onAbrirRoteiro = {})
+        RoteirosScreen(
+            roteiros = DadosExemplo.roteiros,
+            regioes = Regiao.entries,
+            regiao = null,
+            onRegiao = {},
+            onAbrirRoteiro = {}
+        )
     }
 }

@@ -27,10 +27,6 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -41,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pt.ipvc.juventudeexplore.R
 import pt.ipvc.juventudeexplore.data.DadosExemplo
+import pt.ipvc.juventudeexplore.data.model.Pousada
 import pt.ipvc.juventudeexplore.ui.components.CartaoPousada
 import pt.ipvc.juventudeexplore.ui.components.ChipFiltro
 import pt.ipvc.juventudeexplore.ui.components.LinhasTopograficas
@@ -53,40 +50,28 @@ import pt.ipvc.juventudeexplore.ui.theme.Cinzento
 import pt.ipvc.juventudeexplore.ui.theme.JuventudeExploreTheme
 import pt.ipvc.juventudeexplore.ui.theme.TextoEscuro
 import pt.ipvc.juventudeexplore.ui.theme.Turquesa
+import pt.ipvc.juventudeexplore.ui.viewmodel.Filtro
 
-/** Filtros por cima da lista (por agora só mudam o que se vê, com os dados de exemplo). */
-private enum class Filtro(val titulo: Int) {
-    TODAS(R.string.filtro_todas),
-    MAIS_BARATAS(R.string.filtro_baratas),
-    ACESSIVEIS(R.string.filtro_acessiveis)
-}
-
+// O ecra ja nao guarda estado nem filtra: recebe tudo do ViewModel
+// (pousadas, pesquisa, filtro) e avisa-o quando o utilizador muda alguma coisa.
 @Composable
 fun ExplorarScreen(
+    pousadas: List<Pousada>,
+    pesquisa: String,
+    filtro: Filtro,
+    onPesquisa: (String) -> Unit,
+    onFiltro: (Filtro) -> Unit,
     onAbrirPousada: (Int) -> Unit,
     onReservar: (Int) -> Unit,
     onVerMapa: () -> Unit
 ) {
-    var pesquisa by rememberSaveable { mutableStateOf("") }
-    var filtro by rememberSaveable { mutableStateOf(Filtro.TODAS) }
-
-    val encontradas = DadosExemplo.pousadas.filter {
-        pesquisa.isBlank() || it.cidade.contains(pesquisa.trim(), ignoreCase = true) ||
-            it.nome.contains(pesquisa.trim(), ignoreCase = true)
-    }
-    val pousadas = when (filtro) {
-        Filtro.TODAS -> encontradas
-        Filtro.MAIS_BARATAS -> encontradas.sortedBy { it.precos.desde }
-        Filtro.ACESSIVEIS -> encontradas.filter { it.acessivel }
-    }
-
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(bottom = 20.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
         item { BarraTopo() }
-        item { Destaque(pesquisa, onPesquisa = { pesquisa = it }) }
+        item { Destaque(pesquisa, onPesquisa = onPesquisa) }
 
         item {
             LazyRow(
@@ -94,7 +79,7 @@ fun ExplorarScreen(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(Filtro.entries) { f ->
-                    ChipFiltro(stringResource(f.titulo), filtro == f) { filtro = f }
+                    ChipFiltro(stringResource(f.titulo), filtro == f) { onFiltro(f) }
                 }
             }
         }
@@ -216,6 +201,15 @@ private fun Destaque(pesquisa: String, onPesquisa: (String) -> Unit) {
 @Composable
 private fun ExplorarPreview() {
     JuventudeExploreTheme(escuro = false) {
-        ExplorarScreen(onAbrirPousada = {}, onReservar = {}, onVerMapa = {})
+        ExplorarScreen(
+            pousadas = DadosExemplo.pousadas,
+            pesquisa = "",
+            filtro = Filtro.TODAS,
+            onPesquisa = {},
+            onFiltro = {},
+            onAbrirPousada = {},
+            onReservar = {},
+            onVerMapa = {}
+        )
     }
 }

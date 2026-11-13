@@ -15,6 +15,7 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,6 +23,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -44,6 +46,7 @@ import pt.ipvc.juventudeexplore.ui.screens.roteiros.RoteirosScreen
 import pt.ipvc.juventudeexplore.ui.theme.Azul
 import pt.ipvc.juventudeexplore.ui.theme.Branco
 import pt.ipvc.juventudeexplore.ui.theme.Cinzento
+import pt.ipvc.juventudeexplore.ui.viewmodel.JuventudeExploreViewModel
 
 private data class ItemMenu(val rota: String, val titulo: Int, val icone: ImageVector)
 
@@ -82,6 +85,11 @@ fun JuventudeExploreApp() {
     val entradaAtual by navController.currentBackStackEntryAsState()
     val rotaAtual = entradaAtual?.destination?.route
 
+    // Um so ViewModel para a app toda: os ecras partilham o mesmo estado
+    val vm: JuventudeExploreViewModel = viewModel()
+    // Sempre que o estado muda, os ecras que o usam redesenham-se
+    val estado by vm.uiState.collectAsState()
+
     Scaffold(
         // Cada ecrã trata da barra de estado (para o cabeçalho e as fotos ficarem por baixo dela)
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
@@ -119,6 +127,11 @@ fun JuventudeExploreApp() {
             // ---------- Separadores da barra de baixo ----------
             composable(Rotas.EXPLORAR) {
                 ExplorarScreen(
+                    pousadas = estado.pousadas,
+                    pesquisa = estado.pesquisa,
+                    filtro = estado.filtro,
+                    onPesquisa = { vm.mudarPesquisa(it) },
+                    onFiltro = { vm.mudarFiltro(it) },
                     onAbrirPousada = { navController.navigate(Rotas.pousada(it)) },
                     onReservar = { navController.navigate(Rotas.reserva(it)) },
                     onVerMapa = { navController.irParaSeparador(Rotas.MAPA) }
@@ -126,13 +139,23 @@ fun JuventudeExploreApp() {
             }
             composable(Rotas.MAPA) {
                 MapaScreen(
+                    pousadas = estado.pousadas,
+                    roteiros = estado.roteiros,
+                    pesquisa = estado.pesquisa,
+                    onPesquisa = { vm.mudarPesquisa(it) },
                     onAbrirPousada = { navController.navigate(Rotas.pousada(it)) },
                     onReservar = { navController.navigate(Rotas.reserva(it)) },
                     onVerLista = { navController.irParaSeparador(Rotas.EXPLORAR) }
                 )
             }
             composable(Rotas.ROTEIROS) {
-                RoteirosScreen(onAbrirRoteiro = { navController.navigate(Rotas.roteiro(it)) })
+                RoteirosScreen(
+                    roteiros = estado.roteiros,
+                    regioes = estado.regioes,
+                    regiao = estado.regiao,
+                    onRegiao = { vm.mudarRegiao(it) },
+                    onAbrirRoteiro = { navController.navigate(Rotas.roteiro(it)) }
+                )
             }
             composable(Rotas.RESERVAS) {
                 ReservasScreen(
